@@ -6,9 +6,10 @@ on:
     branches: [ master ]
 jobs:
   build:
-    runs-on: [windows-latest,ubuntu-latest]
+    runs-on: ${{ matrix.os }}
     strategy:
       matrix:
+        os: [ubuntu-latest, windows-latest]
         node-version: [12.x, 13.x, 14.x]
         mongodb-version: [4.2]
     steps:
