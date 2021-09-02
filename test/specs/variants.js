@@ -39,9 +39,9 @@ test('[Success] Add a variant overrulling color and dimensions to a product', as
         stock: 10,
         product: g.products[0]._id,
         productDimensions : {
-            width : 50,
-            length : 50,
-            height : 50
+            width : "50",
+            length : "50",
+            height : "50"
         },
         color : "black"
     };
@@ -115,7 +115,7 @@ test('[Fail] Add a variant to an invalid product', async t => {
         .expect(400);
 
     // Check the returned message
-    t.deepEqual(res.body[0].message, 'should match format "objectid"');
+    t.deepEqual(res.body.message, 'Failed to add product variant');
 });
 
 test('[Success] Update existing variant', async t => {

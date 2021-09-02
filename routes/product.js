@@ -235,12 +235,14 @@ const defaultTitleLogic = (__, title,untranslatedColor,dimensions, language,prod
 router.post('/admin/product/addvariant', restrict, checkAccess, async (req, res) => {
     const db = req.app.db;
     // Check product exists
-    const product = await db.products.findOne({ _id: getId(req.body.product) });
+    try{
+        const product = await db.products.findOne({ _id: getId(req.body.product) });
 
-    if(!product){
-        res.status(400).json({ message: 'Failed to add product variant' });
-        return;
-    }
+        if(!product){
+            console.log("no product found");
+            res.status(400).json({ message: 'Failed to add product variant' });
+            return;
+        }
 
     const variantDoc = {
         product: req.body.product,
@@ -277,7 +279,6 @@ router.post('/admin/product/addvariant', restrict, checkAccess, async (req, res)
     variantDoc.product = getId(req.body.product);
     variantDoc.added = new Date();
 
-    try{
         const variant = await db.variants.insertOne(variantDoc);
         product.variants = variant.ops;
 
@@ -285,7 +286,6 @@ router.post('/admin/product/addvariant', restrict, checkAccess, async (req, res)
 
         res.status(200).json({ message: 'Successfully added variant', product });
     }catch(ex){
-        console.log('here?');
         res.status(400).json({ message: 'Failed to add variant. Please try again' });
     }
 });
