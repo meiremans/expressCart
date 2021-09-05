@@ -26,6 +26,7 @@
 		<meta name="keywords" content="{{config.cartTitle}}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />
         <link rel="stylesheet" href="/stylesheets/pushy{{config.env}}.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
         {{#if admin}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/gijgo/1.9.13/combined/css/gijgo.min.css" integrity="sha256-bH0WSMuCFoG/dxeox/5aOWmaZl729yDg4ylckwSRTfU=" crossorigin="anonymous" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.20.2/codemirror.min.css" integrity="sha256-MdzaXfGXzZdeHw/XEV2LNNycipsLk4uZ0FYzO3hbuvI=" crossorigin="anonymous" />
@@ -283,6 +284,16 @@
                     </div>
                 </div>
             </div>
+<!-- START Bootstrap-Cookie-Alert -->
+<div class="alert text-center cookiealert" role="alert">
+    <b>{{@root.__ "Do you like cookies?"}}</b> &#x1F36A; {{@root.__ "We only use necessary cookies."}} <a href="https://cookiesandyou.com/" target="_blank">{{@root.__ Learn more}}</a>
+
+    <button type="button" class="btn btn-primary btn-sm acceptcookies">
+        I agree
+    </button>
+</div>
+<!-- END Bootstrap-Cookie-Alert -->
+            <!-- End of Cookie Banner -->
 		{{/if}}
         <script src="/javascripts/pushy.min.js"></script>
         {{#if admin}}
@@ -300,5 +311,6 @@
         <script>
             feather.replace();
         </script>
+        <script src="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.js"></script>
 	</body>
 </html>
